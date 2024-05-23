@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Add any CSS or Bootstrap links here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url("{% static 'armedlogo.jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: #ffffff; /* Text color for overlay */
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.5); /* Card background color with opacity */
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <a href="{% url 'custom_query' %}" class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Check Stock</h5>
+                        <p class="card-text">View and manage product stock levels.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles can be added here */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("{% static 'armedlogo.jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: #3c0539; /* Text color for overlay */
+            overflow-y: auto; /* Enable vertical scrolling for the product list */
+            background-attachment: fixed; /* Ensure the background image remains fixed */
+        }
+        .cart-profile-buttons {
+            position: fixed; /* Position the buttons fixed */
+            top: 20px; /* Adjust top positioning as needed */
+            right: 20px; /* Adjust right positioning as needed */
+            z-index: 1000; /* Ensure the buttons appear above other content */
+        }
+        .cart-profile-buttons a {
+            margin-right: 10px; /* Add margin between buttons */
+        }
+        .container {
+            padding-top: 100px; /* Adjust padding to prevent content from being hidden under fixed buttons */
+        }
+    </style>
+</head>
+<body>
+
+<div class="cart-profile-buttons">
+    <a href="{% url 'cart_list' %}" class="btn btn-primary">Cart <i class="fas fa-shopping-cart"></i></a>
+    <a href="{% url 'cart_list' %}" class="btn btn-primary">Profile <i class="fas fa-user"></i></a>
+</div>
+
+
+
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Customer Details Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Your Details</h5>
+                    <p class="card-text">Name: {{ cust.customer_name }}</p>
+                    <p class="card-text">Email: {{ cust.customer_email }}</p>
+                    <p class="card-text">Phone: {{ cust.customer_phone }}</p>
+                    <p class="card-text">Address: {{ cust.customer_address }}</p>
+                    <a href="{% url 'cart_view' %}" class="btn btn-primary">Edit Details</a>
+                </div>
+            </div>
+        </div>
+        <!-- Payment Options Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Amount</h5>
+                    <p class="card-text">Total: ${{ total_amount }}</p>
+                    <h5 class="card-title">Payment Options</h5>
+                    <p class="card-text">Choose your payment method:</p>
+                    <a href="{% url 'payment_list'  %}" class="btn btn-primary">Credit Card</a>
+                    <a href="{% url 'payment_list'  %}" class="btn btn-primary">Crypto</a>
+                    <a href="{% url 'payment_list'  %}" class="btn btn-primary">Cash</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome CDN for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
